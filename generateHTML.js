@@ -1,0 +1,2 @@
+function generateHTML(response){
+    return ``}
