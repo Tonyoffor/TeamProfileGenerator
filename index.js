@@ -17,7 +17,7 @@
 
 
 var fs = require("fs"); 
-const generateTeaminfo = require('./TeamInfo')
+const generateTeaminfo = require('./lib/Employee')
 
 
 const inquirer = require('inquirer');
