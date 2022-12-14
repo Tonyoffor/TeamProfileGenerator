@@ -17,7 +17,7 @@
 
 
 var fs = require("fs"); 
-const generateTeaminfo = require('./lib/Employee')
+const generateEmployee = require('./lib/Employee')
 
 
 const inquirer = require('inquirer');
@@ -47,8 +47,8 @@ inquirer
 
 
 ]).then((response) =>{
-        let Readmestring = generateTeaminfo(response)
-        fs.writeFile('ReadMe.md', Readmestring ,  function (err) {
+        let Readmestring = newgenerateEmployee(response)
+        fs.writeFile('Employee', Readmestring ,  function (err) {
           if (err) throw err;
           console.log(response);
         })
