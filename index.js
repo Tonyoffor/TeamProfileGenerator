@@ -47,7 +47,7 @@ inquirer
 
 
 ]).then((response) =>{
-        let Readmestring = newgenerateEmployee(response)
+        let Readmestring = new generateEmployee(response)
         fs.writeFile('Employee', Readmestring ,  function (err) {
           if (err) throw err;
           console.log(response);
