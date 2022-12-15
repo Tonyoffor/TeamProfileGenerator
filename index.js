@@ -25,13 +25,13 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern")
 const generateHTML = require("./generateHTML");
 const path = require("path")
-function mainMenu(){
+function mainMenu(){  //this function start when index.js is called, it calls the manager, and other options from a main menu
 inquirer.prompt({
   type:"list",
   name:"direction",
   messsage: "What type fo employee would you like to create?",
   choices: ["manager", "engineer", "intern", "done" ] 
-}).then(
+}).then( //based on the users choice it calls the correspnding function
   response => {
     if(response.direction==="manager"){
       askManager()
@@ -83,10 +83,7 @@ inquirer
         team.push(manager)
         console.log(team)
         mainMenu()
-        // fs.writeFile('Employee', Readmestring ,  function (err) {
-        //   if (err) throw err;
-        //   console.log(response);
-        // })
+        
       });
 }
 
