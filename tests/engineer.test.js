@@ -1,15 +1,31 @@
 const Engineer = require("../lib/Engineer");
 
-describe('Engineer', () => {
-    it('This will display the engineer information', () => {
-        let engineer = new Engineer("John", 25, "tony@gmai.com", "TonyOffor")
+    describe('Engineer', () => {
+      test('This will display the Engineer name', () => {
+        let engineer = new Engineer("name")
+        expect(engineer.getName()).toBe("name");
         
-      expect(engineer.getName()).toBe("John");
-      expect(engineer.getEmployeeID()).toBe(33);
-      expect(engineer.getEmail()).toBe("tonyc.offor@gmail.com");
-      expect(engineer.getGitHub()).toBe("Tony");
+      })})
 
-    })})
+   describe('Engineer', () => {
+      test('This will display the Engineer employeeID', () => {
+          let engineer = new Engineer("name", 24)
+          expect(engineer.getEmployeeID()).toBe(24);
+          
+        })})
 
+        describe('Engineer', () => {
+          test('This will display the Engineer email', () => {
+              let engineer = new Engineer("name", 24, "email")
+              expect(engineer.getEmail()).toBe("email");
+              
+            })})    
 
-     
+            describe('Engineer', () => {
+              test('This will display the Engineer GitHub', () => {
+                  let engineer = new Engineer("name",24, "email", "gitHub")
+                  expect(engineer.getGitHub()).toBe("gitHub");
+
+                
+                  
+                })})    

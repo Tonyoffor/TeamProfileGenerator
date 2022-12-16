@@ -1,11 +1,25 @@
 const Employee = require("../lib/Employee");
-describe('Employee', () => {
-    it('This will display the Employee information', () => {
-     let employee = new Employee("name", 4, "Email", 4)
-     expect(manager.getName()).toBe("name");
-     expect(manager.getEmployeeID()).toBe(14);
-     expect(manager.getEmail()).toBe("tonyc.offor@gmail.com");
-     expect(manager.getOfficeNumber()).toBe(14);
-    })})
+    describe('Emplyee', () => {
+        test('This will display the Employee name', () => {
+          let employee = new Employee("name", "employeeID", "email")
+          expect(employee.getName()).toBe("name");
+          
+        })})
+    
 
 
+    describe('Employee', () => {
+        test('This will display the Employee employeeID', () => {
+          let employee = new Employee("jon", 24)
+          expect(employee.getEmployeeID()).toBe(24);
+          
+        })})
+
+    describe('Employee', () => {
+            test('This will display the Employee email', () => {
+              let employee = new Employee("hon", "ttt", "email")
+              expect(employee.getEmail()).toBe("email");
+              
+            })})
+
+       
