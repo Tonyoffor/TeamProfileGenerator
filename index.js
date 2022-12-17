@@ -18,12 +18,12 @@
 
 var fs = require("fs"); 
 const Manager = require("./lib/Manager")
-const team = []
+// const team = []
 
 const inquirer = require('inquirer');
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern")
-const generateHTML = require("./generateHTML");
+
 const path = require("path")
 function mainMenu(){  //this function start when index.js is called, it calls the manager, and other options from a main menu
 inquirer.prompt({
@@ -164,6 +164,7 @@ function askEngineer(){
             team.push(intern)
             console.log(team)
             mainMenu()
+            
             // fs.writeFile('Employee', Readmestring ,  function (err) {
             //   if (err) throw err;
             //   console.log(response);
@@ -171,3 +172,7 @@ function askEngineer(){
           });
     }
     mainMenu()
+
+
+
+    const generateHTML = require("./generateHTML");

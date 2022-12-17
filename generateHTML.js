@@ -1,5 +1,9 @@
+const team = "";
+
+
 function insertcard(team){
 const html = []
+
 html.push(generateManager(team.manager))
 html.push(generateEngineer(team.engineer))
 html.push(generateIntern(team.intern))
@@ -7,7 +11,7 @@ return generateHTML(html.join(''))
 }
 
 insertcard(team)
-
+module.exports = generateHTML(cards)
 function generateHTML(cards){
     return `
 <!DOCTYPE html>
@@ -35,7 +39,7 @@ function generateHTML(cards){
 </body>
 </html>
 `
-}
+};
 
 function generateManager(manager){
   return (`
@@ -114,7 +118,7 @@ function generateIntern(interns){
 
 
 
-module.exports = generateHTML
+// module.exports = generateHTML
 
 
 
