@@ -1,17 +1,16 @@
 function insertcard(team){
 const html = []
-generateManager()
-generateEngineer()
-generateIntern()
+html.push(generateManager(team.manager))
+html.push(generateEngineer(team.engineer))
+html.push(generateIntern(team.intern))
+return generateHTML(html.join(''))
 }
 
+insertcard(team)
 
-
-
-function generateHTML(response){
+function generateHTML(cards){
     return `
-    
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -21,173 +20,101 @@ function generateHTML(response){
     <title>Team Information </title>
 </head>
 <body>
-
     <header>
-
         <h1>Team Members</h1>
-
     </header>
-
     <section class="row">
         <div class="col-12 col-md-9">
-         
-  
           <section class="row justify-content-around">
-       
-        (
-          <div id ="Manager" class="col-12 col-sm-6 col-lg-4 mb-3">
-          <div class="card">
-            <h3 class="card-header">
-              Manager
-            </h3>
-            <div class="card-body">
-              <p class="card-text">
-                <div class="vstack gap-3">
-                    <div class="bg-light border">name  </div>
-                    <div class="bg-light border">EmployeeID</div>
-                    <div class="bg-light border"> Email</div>
-                    <div class="bg-light border"> OfficeNumber</div>
-                  </div>
-              </p>
-              <button class="btn btn-block btn-info">Learn more.</button>
-            </div>
-          </div>
-        </div>
-        )
-      
-  
-           
-
-            <div id="Engineer" class="col-12 col-sm-6 col-lg-4 mb-3">
-              <div class="card">
-                <h3 class="card-header">
-                  Engineer
-                </h3>
-                
-                <div class="card-body">
-                  <p class="card-text">
-                    <div class="vstack gap-3">
-                        <div class="bg-light border">name</div>
-                        <div class="bg-light border">EmployeeID</div>
-                        <div class="bg-light border"> Email</div>
-                        <div class="bg-light border">  GitHub</div>
-                      </div>
-                  </p>
-                  <button class="btn btn-block btn-info">Learn more.</button>
-                </div>
-              </div>
-            </div>
-
-            <div id="Intern" class="col-12 col-sm-6 col-lg-4 mb-3">
-              <div class="card">
-                <h3 class="card-header">
-                  Intern
-                </h3>
-                <div class="card-body">
-                  <p class="card-text">
-                    <div class="vstack gap-3">
-                        <div class="bg-light border">name </div>
-                        <div class="bg-light border">EmployeeID</div>
-                        <div class="bg-light border"> Email</div>
-                        <div class="bg-light border"> School </div>
-                      </div>
-                  </p>
-                  <button class="btn btn-block btn-info">Learn more.</button>
-                </div>
-              </div>
-            </div>
+            ${cards}
           </section>
         </div>
         <div class="col-12 col-md-3">
-          
-      </section>
-    
+        </div>
+    </section>
 </body>
 </html>
-    
-    
-    
-    
-    `}
+`
+}
 
-
-
-
-    function generateManager(response){
-      return `
-    
-      ${ (response.role = "manager")}
-      (
-        <div id ="Manager" class="col-12 col-sm-6 col-lg-4 mb-3">
-        <div class="card">
-          <h3 class="card-header">
-            Manager
-          </h3>
-          <div class="card-body">
-            <p class="card-text">
-              <div class="vstack gap-3">
-                  <div class="bg-light border"> Name: ${response.Manager.name}  </div>
-                  <div class="bg-light border">EmployeeID: ${response.Manager.employeeID} </div>
-                  <div class="bg-light border"> Email ${response.Manager.email} </div>
-                  <div class="bg-light border"> OfficeNumber ${response.Manager.officeNumber} </div>
-                </div>
-            </p>
+function generateManager(manager){
+  return (`
+  <div id="Manager" class="col-12 col-sm-6 col-lg-4 mb-3">
+    <div class="card">
+      <h3 class="card-header">
+        Manager
+      </h3>
+      <div class="card-body">
+        <p class="card-text">
+          <div class="vstack gap-3">
+            <div class="bg-light border">name: ${manager.name}</div>
+            <div class="bg-light border">EmployeeID: ${manager.employeeId}</div>
+            <div class="bg-light border">Email: ${manager.email}</div>
+            <div class="bg-light border">OfficeNumber: ${manager.officeNumber}</div>
           </div>
-        </div>
+        </p>
+        <button class="btn btn-block btn-info">Learn more.</button>
       </div>
-      )
-      
-      `}
+    </div>
+  </div>
+  `).join('')
 
-      function generateEngineer(response){
-        return `
-        ${ (response.role = "engineer")}
-        (
-          <div id ="Manager" class="col-12 col-sm-6 col-lg-4 mb-3">
-          <div class="card">
-            <h3 class="card-header">
-              Engineer
-            </h3>
-            <div class="card-body">
-              <p class="card-text">
-                <div class="vstack gap-3">
-                    <div class="bg-light border"> Name: ${response.Engineer.name}  </div>
-                    <div class="bg-light border">EmployeeID: ${response.Engineer.employeeID} </div>
-                    <div class="bg-light border"> Email: ${response.Engineer.email} </div>
-                    <div class="bg-light border"> GitHub: ${response.Engineer.gitHub} </div>
-                  </div>
-              </p>
-            </div>
+
+
+}
+
+
+
+function generateEngineer(engineers){
+  return engineers.map(engineer => `
+  <div id="Engineer" class="col-12 col-sm-6 col-lg-4 mb-3">
+    <div class="card">
+      <h3 class="card-header">
+        Engineer
+      </h3>
+      <div class="card-body">
+        <p class="card-text">
+          <div class="vstack gap-3">
+            <div class="bg-light border">name: ${engineer.name}</div>
+            <div class="bg-light border">EmployeeID: ${engineer.employeeId}</div>
+            <div class="bg-light border">Email: ${engineer.email}</div>
+            <div class="bg-light border">School: ${engineer.gitHub}</div>
           </div>
-        </div>
-        )
-        
-        `}
+        </p>
+        <button class="btn btn-block btn-info">Learn more.</button>
+      </div>
+    </div>
+  </div>
+`).join('')}
 
-        function generateIntern(response){
-          return `
-          ${ (response.role = "intern")}
-          (
-            <div id ="Manager" class="col-12 col-sm-6 col-lg-4 mb-3">
-            <div class="card">
-              <h3 class="card-header">
-                Intern
-              </h3>
-              <div class="card-body">
-                <p class="card-text">
-                  <div class="vstack gap-3">
-                      <div class="bg-light border"> Name: ${response.Intern.name}  </div>
-                      <div class="bg-light border">EmployeeID: ${response.Intern.employeeID} </div>
-                      <div class="bg-light border"> Email: ${response.Intern.email} </div>
-                      <div class="bg-light border"> School: ${response.Intern.school} </div>
-                    </div>
-                </p>
-              </div>
-            </div>
+
+
+function generateIntern(interns){
+  return interns.map(intern => `
+  <div id="Intern" class="col-12 col-sm-6 col-lg-4 mb-3">
+    <div class="card">
+      <h3 class="card-header">
+        Intern
+      </h3>
+      <div class="card-body">
+        <p class="card-text">
+          <div class="vstack gap-3">
+            <div class="bg-light border">name: ${intern.name}</div>
+            <div class="bg-light border">EmployeeID: ${intern.employeeId}</div>
+            <div class="bg-light border">Email: ${intern.email}</div>
+            <div class="bg-light border">School: ${intern.school}</div>
           </div>
-          )
-          
-          `}
+        </p>
+        <button class="btn btn-block btn-info">Learn more.</button>
+      </div>
+    </div>
+  </div>
+  `).join('')
+}
+
+
+
+module.exports = generateHTML
 
 
 
@@ -195,7 +122,22 @@ function generateHTML(response){
 
 
 
-    module.exports = generateHTML
+  
+      // if (response.role === "manager") {
+      //   return html
+      // }}
+    
+
+
+
+
+
+
+
+
+
+
+    
 
 
 
