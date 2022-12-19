@@ -18,8 +18,8 @@
 
 var fs = require("fs"); 
 const Manager = require("./lib/Manager")
-// const team = []
-
+const team = []
+const generateHTML = require("./generateHTML");
 const inquirer = require('inquirer');
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern")
@@ -175,4 +175,4 @@ function askEngineer(){
 
 
 
-    const generateHTML = require("./generateHTML");
+    // const generateHTML = require("./generateHTML");
