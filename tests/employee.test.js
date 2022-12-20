@@ -6,7 +6,8 @@ const Employee = require("../lib/Employee");
           
         })})
     
-
+//in order to carry out tests you need to make sure that the value you are testing is in the same position as in the js file it is connected to
+// e.g to test name you would only need name in the new employee bracket but to test email you would need to add the values before email so that the test knows its position
 
     describe('Employee', () => {
         test('This will display the Employee employeeID', () => {

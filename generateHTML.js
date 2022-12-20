@@ -1,120 +1,135 @@
 const team = "";
 
-
-function insertcard(team){
+//This function creates the team info based on what is filled out
+function generateHTML(team){
 const html = []
 
-html.push(generateManager(team.manager))
-html.push(generateEngineer(team.engineer))
-html.push(generateIntern(team.intern))
-return generateHTML(html.join(''))
+team.map(team=>{
+  if (team.getRole()==="manager"){
+    html.push(generateManager(team))
+  }else if (team.getRole()==="engineer"){
+    html.push(generateEngineer(team))
+  }else if (team.getRole()==="intern"){
+    html.push(generateIntern(team))
+  }
+})
+
+
+//This generates the HTML page that the public will see it has the functions that generate each individual varibale
+return generateFinalHTML(html)
 }
 
-insertcard(team)
-module.exports = generateHTML(cards)
-function generateHTML(cards){
-    return `
+    function generateManager(manager){
+      return `
+      <div id="Manager" class="col-12 col-sm-6 col-lg-4 mb-3 center ">
+        <div class="card">
+          <h3 class="card-header">
+            Manager
+          </h3>
+          <div class="card-body">
+            <p class="card-text">
+              <div class="vstack gap-3">
+                <div class="bg-light border">name: ${manager.getName()}</div>
+                <div class="bg-light border">EmployeeID: ${manager.getEmployeeID()}</div>
+                <div class="bg-light border">Email: ${manager.getEmail()}</div>
+                <div class="bg-light border">OfficeNumber: ${manager.getofficeNumber()}</div>
+              </div>
+            </p>
+            <button class="btn btn-block btn-info">Learn more.</button>
+          </div>
+        </div>
+      </div>
+      `
+    }
+    
+  
+  
+  
+  
+  
+    function generateEngineer(engineer){
+      return `
+      <div id="Engineer" class="col-12 col-sm-6 col-lg-4 mb-3">
+        <div class="card">
+          <h3 class="card-header">
+            Engineer
+          </h3>
+          <div class="card-body">
+            <p class="card-text">
+              <div class="vstack gap-3">
+                <div class="bg-light border">name: ${engineer.getName()}</div>
+                <div class="bg-light border">EmployeeID: ${engineer.getEmployeeID()}</div>
+                <div class="bg-light border">Email: ${engineer.getEmail()}</div>
+                <div class="bg-light border">GitHub:  (https://github.com/${engineer.getGitHub()}) </div>
+              </div>
+            </p>
+            <button class="btn btn-block btn-info">Learn more.</button>
+          </div>
+        </div>
+      </div>
+    `}
+  
+  
+  
+  
+ 
+    function generateIntern(intern){
+      return  `
+      <div id="Intern" class="col-12 col-sm-6 col-lg-4 mb-3">
+        <div class="card">
+          <h3 class="card-header">
+            Intern
+          </h3>
+          <div class="card-body">
+            <p class="card-text">
+              <div class="vstack gap-3">
+                <div class="bg-light border">name: ${intern.getName()}</div>
+                <div class="bg-light border">EmployeeID: ${intern.getEmployeeID()}</div>
+                <div class="bg-light border">Email: ${intern.getEmail()}</div>
+                <div class="bg-light border">School: ${intern.getschool()}</div>
+              </div>
+            </p>
+            <button class="btn btn-block btn-info">Learn more.</button>
+          </div>
+        </div>
+      </div>
+      `
+    }
+  
+//Based on what the user selects will now be placed inside the cards section of this function 
+function generateFinalHTML(cards){
+  return `
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-    <title>Team Information </title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+  <title>Team Information </title>
 </head>
 <body>
-    <header>
-        <h1>Team Members</h1>
-    </header>
-    <section class="row">
-        <div class="col-12 col-md-9">
-          <section class="row justify-content-around">
-            ${cards}
-          </section>
-        </div>
-        <div class="col-12 col-md-3">
-        </div>
-    </section>
+  <header>
+      <h1>Team Members</h1>
+  </header>
+  <section class="row">
+      <div class="col-12 col-md-9">
+        <section class="row justify-content-around">
+          ${cards}
+        </section>
+      </div>
+      <div class="col-12 col-md-3">
+      </div>
+  </section>
 </body>
 </html>
 `
 };
 
-function generateManager(manager){
-  return (`
-  <div id="Manager" class="col-12 col-sm-6 col-lg-4 mb-3">
-    <div class="card">
-      <h3 class="card-header">
-        Manager
-      </h3>
-      <div class="card-body">
-        <p class="card-text">
-          <div class="vstack gap-3">
-            <div class="bg-light border">name: ${manager.name}</div>
-            <div class="bg-light border">EmployeeID: ${manager.employeeId}</div>
-            <div class="bg-light border">Email: ${manager.email}</div>
-            <div class="bg-light border">OfficeNumber: ${manager.officeNumber}</div>
-          </div>
-        </p>
-        <button class="btn btn-block btn-info">Learn more.</button>
-      </div>
-    </div>
-  </div>
-  `).join('')
+
+module.exports = generateHTML;
 
 
-
-}
-
-
-
-function generateEngineer(engineers){
-  return engineers.map(engineer => `
-  <div id="Engineer" class="col-12 col-sm-6 col-lg-4 mb-3">
-    <div class="card">
-      <h3 class="card-header">
-        Engineer
-      </h3>
-      <div class="card-body">
-        <p class="card-text">
-          <div class="vstack gap-3">
-            <div class="bg-light border">name: ${engineer.name}</div>
-            <div class="bg-light border">EmployeeID: ${engineer.employeeId}</div>
-            <div class="bg-light border">Email: ${engineer.email}</div>
-            <div class="bg-light border">School: ${engineer.gitHub}</div>
-          </div>
-        </p>
-        <button class="btn btn-block btn-info">Learn more.</button>
-      </div>
-    </div>
-  </div>
-`).join('')}
-
-
-
-function generateIntern(interns){
-  return interns.map(intern => `
-  <div id="Intern" class="col-12 col-sm-6 col-lg-4 mb-3">
-    <div class="card">
-      <h3 class="card-header">
-        Intern
-      </h3>
-      <div class="card-body">
-        <p class="card-text">
-          <div class="vstack gap-3">
-            <div class="bg-light border">name: ${intern.name}</div>
-            <div class="bg-light border">EmployeeID: ${intern.employeeId}</div>
-            <div class="bg-light border">Email: ${intern.email}</div>
-            <div class="bg-light border">School: ${intern.school}</div>
-          </div>
-        </p>
-        <button class="btn btn-block btn-info">Learn more.</button>
-      </div>
-    </div>
-  </div>
-  `).join('')
-}
 
 
 
